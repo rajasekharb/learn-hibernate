@@ -25,5 +25,6 @@
 
         <!--Mapped entities-->
         <mapping class="com.brs.hibernate.entity.Todo"/>
+        <mapping resource="hibernate.mapping.xml"/>
     </session-factory>
 </hibernate-configuration>

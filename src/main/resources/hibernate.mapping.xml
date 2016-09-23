@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.brs.hibernate.entity">
+    <!--Showroom class mapping-->
+    <class name="Showroom" table="t_showroom_list">
+        <id name="id" column="f_showroom_id">
+            <generator class="native"/>
+        </id>
+
+        <list name="carList" table="t_car_list" cascade="all">
+            <key column="f_showroom_id"/>
+            <index column="f_car_index"/>
+            <one-to-many class="Car"/>
+        </list>
+
+        <property name="manager" column="f_manager" type="string"/>
+        <property name="location" column="f_location" type="string"/>
+    </class>
+
+    <!--Car class mapping-->
+
+    <class name="Car" table="t_car_list">
+        <id name="id" column="f_car_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="f_car_name" type="string"/>
+        <property name="color" column="f_car_color" type="string"/>
+    </class>
+</hibernate-mapping>

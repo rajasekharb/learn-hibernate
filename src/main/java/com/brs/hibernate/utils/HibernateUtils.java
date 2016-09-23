@@ -60,8 +60,8 @@ public class HibernateUtils {
                 final String entityName = entityType.getName();
                 final Query query = session.createQuery("from " + entityName);
                 System.out.println("Executing: " + query.getQueryString());
-                for (Object o : query.list()) {
-                    System.out.println("  " + o);
+                for (Object object : query.list()) {
+                    System.out.println("  " + object);
                 }
             }
         } finally {
