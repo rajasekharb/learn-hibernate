@@ -3,8 +3,8 @@ package com.brs.hibernate.utils;
 import org.hibernate.Metamodel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 
@@ -16,21 +16,20 @@ import java.util.Set;
  */
 public class HibernateUtils {
     private static final SessionFactory SESSION_FACTORY;
-    private static final ServiceRegistry SERVICE_REGISTRY;
+    private static ServiceRegistry SERVICE_REGISTRY;
 
     static {
         try {
-            Configuration configuration = new Configuration();
-            configuration.configure("hibernate.cfg.xml");
-            SERVICE_REGISTRY = new StandardServiceRegistryBuilder().applySettings
-                    (configuration.getProperties()).build();
-            SESSION_FACTORY = configuration.buildSessionFactory(SERVICE_REGISTRY);
+            SERVICE_REGISTRY = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+            SESSION_FACTORY = new MetadataSources(SERVICE_REGISTRY).buildMetadata().buildSessionFactory();
         } catch (Throwable ex) {
+            //There is a problem
+            StandardServiceRegistryBuilder.destroy(SERVICE_REGISTRY);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
-    public static Session getSession() {
+    public static Session getOpenSession() {
         return getSessionFactory().openSession();
     }
 
@@ -40,18 +39,18 @@ public class HibernateUtils {
         }
     }
 
-    public static void shutdown() {
+    private static void shutdown() {
         if (SESSION_FACTORY != null && !SESSION_FACTORY.isClosed()) {
             SESSION_FACTORY.close();
         }
     }
 
-    public static SessionFactory getSessionFactory() {
+    private static SessionFactory getSessionFactory() {
         return SESSION_FACTORY;
     }
 
     public static void main(final String[] args) {
-        final Session session = getSession();
+        final Session session = getOpenSession();
         try {
             System.out.println("Querying all the managed entities...");
             SessionFactory sessionFactory = session.getSessionFactory();
