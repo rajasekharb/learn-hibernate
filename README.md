@@ -9,7 +9,7 @@
 5. Hibernate one to many example
 6. Provides options to work with oracle and hsqldb(In memory)
 
-### Notes:
+### Note:
 
 * Oracle jdbc driver jar from the pom.xml has to be commented if you don't want to work with oracle
 * Or download the oracle jar for 11g and install with the same groupId, artifactId and version into your local machine
