@@ -14,7 +14,7 @@ public class TodoTest {
     @Test
     public void insertTest() {
         //begin
-        Session openSession = HibernateUtils.getOpenSession();
+        Session openSession = HibernateUtils.openSession();
 
         //begin
         Transaction transaction = openSession.getTransaction();

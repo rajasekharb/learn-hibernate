@@ -7,6 +7,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.metamodel.EntityType;
 import java.util.Set;
@@ -16,6 +18,7 @@ import java.util.Set;
  */
 public class HibernateUtils {
     private static final SessionFactory SESSION_FACTORY;
+    private static final Logger logger = LoggerFactory.getLogger(HibernateUtils.class);
     private static ServiceRegistry serviceRegistry;
 
     static {
@@ -29,7 +32,7 @@ public class HibernateUtils {
         }
     }
 
-    public static Session getOpenSession() {
+    public static Session openSession() {
         return getSessionFactory().openSession();
     }
 
@@ -49,23 +52,27 @@ public class HibernateUtils {
         return SESSION_FACTORY;
     }
 
+    //Just for testing purposes.
     public static void main(final String[] args) {
-        final Session session = getOpenSession();
+        final Session session = openSession();
         try {
-            System.out.println("Querying all the managed entities...");
-            SessionFactory sessionFactory = session.getSessionFactory();
-            Metamodel metamodel = sessionFactory.getMetamodel();
-            Set<EntityType<?>> entities = metamodel.getEntities();
-            for (EntityType entityType : entities) {
-                final String entityName = entityType.getName();
-                final Query query = session.createQuery("from " + entityName);
-                System.out.println("Executing: " + query.getQueryString());
-                for (Object object : query.list()) {
-                    System.out.println("  " + object);
+            if (logger.isDebugEnabled()) {
+                logger.debug("Querying all the managed entities...");
+                SessionFactory sessionFactory = session.getSessionFactory();
+                Metamodel metamodel = sessionFactory.getMetamodel();
+                Set<EntityType<?>> entities = metamodel.getEntities();
+                for (EntityType entityType : entities) {
+                    final String entityName = entityType.getName();
+                    final Query query = session.createQuery("from " + entityName);
+                    logger.debug("Executing: " + query.getQueryString());
+                    for (Object object : query.list()) {
+                        logger.debug("  " + object);
+                    }
                 }
             }
         } finally {
             closeSession(session);
+            shutdown();
         }
     }
 

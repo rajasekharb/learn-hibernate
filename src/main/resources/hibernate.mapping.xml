@@ -20,7 +20,6 @@
     </class>
 
     <!--Car class mapping-->
-
     <class name="Car" table="t_car_list">
         <id name="id" column="f_car_id">
             <generator class="native"/>

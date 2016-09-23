@@ -23,8 +23,10 @@
         <property name="format_sql">true</property>
         <property name="show_sql">true</property>
 
-        <!--Mapped entities-->
+        <!--Annotation based-->
         <mapping class="com.brs.hibernate.entity.Todo"/>
+
+        <!--Mapped entities. One to Many mapping-->
         <mapping resource="hibernate.mapping.xml"/>
     </session-factory>
 </hibernate-configuration>
