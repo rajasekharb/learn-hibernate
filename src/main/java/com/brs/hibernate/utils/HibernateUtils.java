@@ -16,15 +16,15 @@ import java.util.Set;
  */
 public class HibernateUtils {
     private static final SessionFactory SESSION_FACTORY;
-    private static ServiceRegistry SERVICE_REGISTRY;
+    private static ServiceRegistry serviceRegistry;
 
     static {
         try {
-            SERVICE_REGISTRY = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-            SESSION_FACTORY = new MetadataSources(SERVICE_REGISTRY).buildMetadata().buildSessionFactory();
+            serviceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+            SESSION_FACTORY = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
         } catch (Throwable ex) {
             //There is a problem
-            StandardServiceRegistryBuilder.destroy(SERVICE_REGISTRY);
+            StandardServiceRegistryBuilder.destroy(serviceRegistry);
             throw new ExceptionInInitializerError(ex);
         }
     }
