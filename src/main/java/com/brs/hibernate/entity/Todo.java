@@ -8,6 +8,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_todo")
+@SuppressWarnings("unused")
 public class Todo implements Serializable {
     private static final long serialVersionUID = 1L;
 
