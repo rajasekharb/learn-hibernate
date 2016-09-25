@@ -1,4 +1,4 @@
-package com.brs.hibernate.entity.set;
+package com.brs.hibernate.entity.map;
 
 import com.brs.hibernate.utils.HibernateUtils;
 import org.hibernate.Session;
@@ -8,8 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.brs.hibernate.TestUtils.retrieveObjects;
 import static org.junit.Assert.assertNotNull;
@@ -17,9 +17,8 @@ import static org.junit.Assert.assertNotNull;
 /**
  * @author Rajasekhar
  */
-public class ShowroomTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(ShowroomTest.class);
+public class MapTest {
+    private static final Logger logger = LoggerFactory.getLogger(MapTest.class);
 
     @Test
     public void insertTest() throws Exception {
@@ -32,15 +31,14 @@ public class ShowroomTest {
         showroom.setLocation("Delhi");
         showroom.setManager("Scott");
 
-        Set<Car> set = new HashSet<>();
+        Map<String, Car> cars = new HashMap<>();
 
-        /*Now duplicates wont be stored*/
-        set.add(new Car("Ford", "silver"));
-        set.add(new Car("Ford", "silver"));
-        set.add(new Car("Ford", "silver"));
-        set.add(new Car("Ford", "Green"));
+        Car silver = new Car("Ford", "silver");
+        Car green = new Car("Ford", "green");
 
-        showroom.setCars(set);
+        cars.put("Tiger", silver);
+        cars.put("King", green);
+        showroom.setCars(cars);
 
         Serializable serializable = session.save(showroom);
         logger.info("Saved with id {} ", serializable);
@@ -53,6 +51,6 @@ public class ShowroomTest {
 
     @Test
     public void retrieveTest() throws Exception {
-        retrieveObjects("t_showroom", Showroom.class);
+        retrieveObjects("t_showroom_map", Showroom.class);
     }
 }

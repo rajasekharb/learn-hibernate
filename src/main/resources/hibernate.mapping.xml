@@ -21,7 +21,8 @@
         </list>
     </class>
 
-    <!--Nothing special here. List package Car mapping.-->
+    <!--Car from list package-->
+    <!--Nothing special here-->
     <class name="com.brs.hibernate.entity.list.Car" table="t_car_list">
         <id name="id" type="long" column="f_car_id">
             <generator class="native"/>
@@ -31,7 +32,7 @@
         <property name="name" column="f_car_name" type="string"/>
     </class>
 
-    <!--Set package showroom mapping-->
+    <!--Showroom from set package-->
     <class name="com.brs.hibernate.entity.set.Showroom" table="t_showroom">
         <id name="id" type="long" column="f_showroom_id">
             <generator class="native"/>
@@ -47,7 +48,7 @@
         </set>
     </class>
 
-    <!--Set package Car mapping-->
+    <!--Car from set package-->
     <class name="com.brs.hibernate.entity.set.Car" table="t_car">
         <id name="id" column="f_car_id" type="long">
             <generator class="native"/>
@@ -55,4 +56,32 @@
         <property name="name" column="f_name" type="string"/>
         <property name="color" column="f_color" type="string"/>
     </class>
+
+    <!--Showroom from map package-->
+    <!--Each car is reserved for a customer. So, Showroom consists of a Map of cars.-->
+    <class name="com.brs.hibernate.entity.map.Showroom" table="t_showroom_map">
+        <id name="id" column="f_showroom_id" type="long">
+            <generator class="native"/>
+        </id>
+
+        <property name="location" column="f_location" type="string"/>
+        <property name="manager" column="f_manager" type="string"/>
+
+        <map name="cars" table="t_car_map" cascade="all">
+            <key column="f_showroom_id"/>
+            <map-key column="f_customer_name" type="string"/><!--Creates an extra column in car for customer-->
+            <one-to-many class="com.brs.hibernate.entity.map.Car"/>
+        </map>
+    </class>
+
+    <!--Car from map package-->
+    <class name="com.brs.hibernate.entity.map.Car" table="t_car_map">
+        <id name="id" column="f_car_id" type="long">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="f_name" type="string"/>
+        <property name="color" column="f_color" type="string"/>
+    </class>
+
 </hibernate-mapping>

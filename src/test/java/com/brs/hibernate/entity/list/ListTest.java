@@ -17,9 +17,9 @@ import static org.junit.Assert.assertNotNull;
 /**
  * @author Rajasekhar
  */
-public class ShowroomTest {
+public class ListTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(ShowroomTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
 
     @Test
     public void insertTest() throws Exception {
