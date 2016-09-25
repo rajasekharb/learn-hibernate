@@ -2,30 +2,32 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.brs.hibernate.entity">
-    <!--Showroom class mapping-->
-    <class name="Showroom" table="t_showroom_list">
-        <id name="id" column="f_showroom_id">
+<hibernate-mapping>
+    <!--Showroom from list package.-->
+    <class name="com.brs.hibernate.entity.list.Showroom" table="t_showroom_list">
+        <id name="id" column="f_showroom_id" type="long">
             <generator class="native"/>
         </id>
 
-        <list name="carList" table="t_car_list" cascade="all">
-            <key column="f_showroom_id"/>
-            <index column="f_car_index"/>
-            <one-to-many class="Car"/>
-        </list>
-
-        <property name="manager" column="f_manager" type="string"/>
         <property name="location" column="f_location" type="string"/>
+        <property name="manager" column="f_manager" type="string"/>
+
+        <!--If you omit cascade="all", then you will get exception. Because car is
+        in list which you are trying to save, but the car itself is not being saved in database.-->
+        <list name="cars" table="t_car_list" cascade="all">
+            <key column="f_showroom_id"/>
+            <index column="f_car_index"/><!--Saves the insertion order-->
+            <one-to-many class="com.brs.hibernate.entity.list.Car"/>
+        </list>
     </class>
 
-    <!--Car class mapping-->
-    <class name="Car" table="t_car_list">
-        <id name="id" column="f_car_id">
+    <!--Nothing special here. List package Car mapping.-->
+    <class name="com.brs.hibernate.entity.list.Car" table="t_car_list">
+        <id name="id" type="long" column="f_car_id">
             <generator class="native"/>
         </id>
 
-        <property name="name" column="f_car_name" type="string"/>
         <property name="color" column="f_car_color" type="string"/>
+        <property name="name" column="f_car_name" type="string"/>
     </class>
 </hibernate-mapping>

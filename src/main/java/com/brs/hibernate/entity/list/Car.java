@@ -1,4 +1,4 @@
-package com.brs.hibernate.entity;
+package com.brs.hibernate.entity.list;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Car implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private long id;
+    private Long id;
     private String name;
     private String color;
 
@@ -17,11 +17,14 @@ public class Car implements Serializable {
         this.color = color;
     }
 
-    public long getId() {
+    public Car() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,20 +45,20 @@ public class Car implements Serializable {
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (this == other) return true;
-        if (other == null || getClass() != other.getClass()) return false;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
 
-        Car car = (Car) other;
+        Car car = (Car) object;
 
-        if (id != car.id) return false;
+        if (id != null ? !id.equals(car.id) : car.id != null) return false;
         if (name != null ? !name.equals(car.name) : car.name != null) return false;
         return color != null ? color.equals(car.color) : car.color == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
         return result;
