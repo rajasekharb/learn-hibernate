@@ -1,7 +1,7 @@
 ## Java ORM for Beginners
 
 ---
-### Hibernate ORM 5.2.2.Final beginners guide
+### Hibernate 5.2.2.Final beginners guide
 ___
 
 1. Helps to get started with the new StandardServiceRegistryBuilder and MetadataSources API to bootstrap hibernate.
