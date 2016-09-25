@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/rajasekharb/learn-hibernate.svg?branch=master)](https://travis-ci.org/rajasekharb/learn-hibernate)
 
-## Java ORM for Beginners
+## Hibernate for Beginners
 
 ---
-### Hibernate 5.2.2.Final beginners guide
+### Hibernate version 5.2.2.Final Quickstart Samples
 ___
 
 1. Helps to get started with the new StandardServiceRegistryBuilder and MetadataSources API to bootstrap hibernate.

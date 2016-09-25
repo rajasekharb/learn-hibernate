@@ -2,6 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--suppress HibernateMappingDomInspection -->
 <hibernate-mapping><!--Not using package attribute as we have same class names in different packages-->
     <!--Showroom from list package.-->
     <class name="com.brs.hibernate.entity.list.Showroom" table="t_showroom_list">
@@ -84,4 +85,29 @@
         <property name="color" column="f_color" type="string"/>
     </class>
 
+    <!--Showroom from array package-->
+    <class name="com.brs.hibernate.entity.array.Showroom" table="t_showroom_array">
+        <id name="id" column="f_showroom_id" type="long">
+            <generator class="native"/>
+        </id>
+
+        <property name="location" column="f_location" type="string"/>
+        <property name="manager" column="f_manager" type="string"/>
+
+        <array name="cars" table="t_car_array" cascade="all">
+            <key column="f_showroom_id"/>
+            <index column="f_car_index"/><!--Saves the insertion order-->
+            <one-to-many class="com.brs.hibernate.entity.array.Car"/>
+        </array>
+    </class>
+
+    <!--Car from array package-->
+    <class name="com.brs.hibernate.entity.array.Car" table="t_car_array">
+        <id name="id" type="long" column="f_car_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="color" column="f_car_color" type="string"/>
+        <property name="name" column="f_car_name" type="string"/>
+    </class>
 </hibernate-mapping>
