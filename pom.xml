@@ -57,17 +57,18 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-        <!--Useful for unit testing.-->
+        <!--Useful for unit testing and Continuous Integration-->
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
         </dependency>
-        <dependency>
+
+        <!--<dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
             <version>${ojdbc6.version}</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
