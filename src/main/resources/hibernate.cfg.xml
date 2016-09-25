@@ -5,18 +5,18 @@
 <hibernate-configuration>
     <session-factory>
         <!--For HSQLDB. In memory.-->
-        <!--<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
         <property name="connection.username">sa</property>
         <property name="connection.password">""</property>
-        <property name="connection.url">jdbc:hsqldb:mem:users</property>
-        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>-->
+        <property name="connection.url">jdbc:hsqldb:mem:testDB</property>
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
 
         <!--For Oracle-->
-        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <!--<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
         <property name="connection.username">devuser</property>
         <property name="connection.password">devuser</property>
         <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/xe</property>
-        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>-->
 
         <!--Standard properties-->
         <property name="hbm2ddl.auto">update</property>
