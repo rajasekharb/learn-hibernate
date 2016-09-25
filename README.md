@@ -1,4 +1,4 @@
-https://travis-ci.org/rajasekharb/learn-hibernate.svg?branch=master
+[![Build Status](https://travis-ci.org/rajasekharb/learn-hibernate.svg?branch=master)](https://travis-ci.org/rajasekharb/learn-hibernate)
 
 ## Java ORM for Beginners
 
