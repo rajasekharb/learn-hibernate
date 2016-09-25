@@ -17,7 +17,7 @@ public class TestUtils {
     private static final Logger logger = LoggerFactory.getLogger(TestUtils.class);
 
     /*
-        Used as common way of retrieving all the entities. Simple select * from
+        Used as common way of retrieving all the entities. Simple "select * from"
      */
     public static <T> void retrieveObjects(String entityName, Class<T> clazz) {
         Session session = HibernateUtils.openSession();
