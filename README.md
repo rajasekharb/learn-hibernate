@@ -1,3 +1,5 @@
+https://travis-ci.org/rajasekharb/learn-hibernate.svg?branch=master
+
 ## Java ORM for Beginners
 
 ---
