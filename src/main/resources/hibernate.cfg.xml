@@ -26,7 +26,7 @@
         <!--Annotation based-->
         <mapping class="com.brs.hibernate.entity.Todo"/>
 
-        <!--Mapped entities. One to Many mapping-->
+        <!--Mapped entities. One to Many mapping. Has examples for list, set, array, map, bag. bagid-->
         <mapping resource="hibernate.mapping.xml"/>
     </session-factory>
 </hibernate-configuration>
