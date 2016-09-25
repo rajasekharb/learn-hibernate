@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/rajasekharb/learn-hibernate.svg?branch=master)](https://travis-ci.org/rajasekharb/learn-hibernate)
-
+[![Coverage Status](https://coveralls.io/repos/github/rajasekharb/learn-hibernate/badge.svg?branch=master)](https://coveralls.io/github/rajasekharb/learn-hibernate?branch=master)
 ## Hibernate for Beginners
 
 ---
