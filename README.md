@@ -1,7 +1,7 @@
-# Learn Hibernate 5.2.2.Final with simple & clear examples
+## Java ORM for Beginners
 
 ---
-### Hibernate ORM beginners guide
+### Hibernate ORM 5.2.2.Final beginners guide
 ___
 
 1. Helps to get started with the new StandardServiceRegistryBuilder and MetadataSources API to bootstrap hibernate.
