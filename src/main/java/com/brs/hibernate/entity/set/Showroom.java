@@ -1,7 +1,5 @@
 package com.brs.hibernate.entity.set;
 
-import com.brs.hibernate.entity.list.Car;
-
 import java.util.Set;
 
 /**

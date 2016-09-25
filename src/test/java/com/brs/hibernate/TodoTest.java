@@ -6,18 +6,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Assert;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author Rajasekhar
  */
 public class TodoTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(TodoTest.class);
 
     @Test
     public void insertTest() throws Exception {
@@ -42,15 +37,6 @@ public class TodoTest {
 
     @Test
     public void retrieveTest() throws Exception {
-        //begin
-        Session session = HibernateUtils.openSession();
-
-        //begin
-        Transaction transaction = session.getTransaction();
-        transaction.begin();
-
-        List<Todo> list = session.createQuery("from Todo", Todo.class).list();
-        Assert.assertNotNull(list);
-        logger.info(list.toString());
+        TestUtils.retrieveObjects("t_todo", Todo.class);
     }
 }

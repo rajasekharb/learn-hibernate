@@ -30,4 +30,29 @@
         <property name="color" column="f_car_color" type="string"/>
         <property name="name" column="f_car_name" type="string"/>
     </class>
+
+    <!--Set package showroom mapping-->
+    <class name="com.brs.hibernate.entity.set.Showroom" table="t_showroom">
+        <id name="id" type="long" column="f_showroom_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="location" column="f_location" type="string"/>
+        <property name="manager" column="f_manager" type="string"/>
+
+        <set name="cars" table="t_car" cascade="all">
+            <key column="f_showroom_id"/>
+            <!--Sets don't preserve insertion order-->
+            <one-to-many class="com.brs.hibernate.entity.set.Car"/>
+        </set>
+    </class>
+
+    <!--Set package Car mapping-->
+    <class name="com.brs.hibernate.entity.set.Car" table="t_car">
+        <id name="id" column="f_car_id" type="long">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="f_name" type="string"/>
+        <property name="color" column="f_color" type="string"/>
+    </class>
 </hibernate-mapping>
