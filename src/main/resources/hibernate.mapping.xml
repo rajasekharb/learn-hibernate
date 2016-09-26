@@ -110,4 +110,29 @@
         <property name="color" column="f_car_color" type="string"/>
         <property name="name" column="f_car_name" type="string"/>
     </class>
+
+    <!--Showroom from bag package-->
+    <class name="com.brs.hibernate.entity.bag.Showroom" table="t_showroom_bag">
+        <id name="id" column="f_showroom_id" type="long">
+            <generator class="native"/>
+        </id>
+
+        <property name="location" column="f_location" type="string"/>
+        <property name="manager" column="f_manager" type="string"/>
+
+        <bag name="cars" table="t_car_bag" cascade="all">
+            <key column="f_showroom_id"/>
+            <one-to-many class="com.brs.hibernate.entity.bag.Car"/>
+        </bag>
+    </class>
+
+    <!--Car from bag package-->
+    <class name="com.brs.hibernate.entity.bag.Car" table="t_car_bag">
+        <id name="id" type="long" column="f_car_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="color" column="f_car_color" type="string"/>
+        <property name="name" column="f_car_name" type="string"/>
+    </class>
 </hibernate-mapping>
