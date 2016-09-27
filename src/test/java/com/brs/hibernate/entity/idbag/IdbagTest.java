@@ -1,4 +1,4 @@
-package com.brs.hibernate.entity.bag;
+package com.brs.hibernate.entity.idbag;
 
 import com.brs.hibernate.TestUtils;
 import com.brs.hibernate.utils.HibernateUtils;
@@ -11,8 +11,7 @@ import java.util.List;
 /**
  * @author Rajasekhar
  */
-public class BagTest {
-
+public class IdbagTest {
     @Test
     public void insertTest() throws Exception {
         Session session = HibernateUtils.openSession();
@@ -20,12 +19,12 @@ public class BagTest {
 
         Showroom showroom = new Showroom();
 
-        showroom.setManager("Scott");
-        showroom.setLocation("Delhi");
+        showroom.setManager("Mary");
+        showroom.setLocation("Bombay");
         List<Car> cars = new ArrayList<>();
-        showroom.setCars(cars);
-        cars.add(new Car("Toyota", "White"));
+        cars.add(new Car("Rolls Royce", "White"));
 
+        showroom.setCars(cars);
         session.save(showroom);
 
         session.getTransaction().commit();
@@ -34,6 +33,8 @@ public class BagTest {
 
     @Test
     public void retrieveTest() throws Exception {
-        TestUtils.retrieveObjects("t_showroom_bag", Showroom.class);
+        TestUtils.retrieveObjects("t_showroom_idbag", Showroom.class);
     }
 }
+
+

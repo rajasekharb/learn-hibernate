@@ -7,8 +7,8 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Hibernate Getting Started Guide Template</name>
-    <description>Getting Started Guide. Serves as a template for quick learning.</description>
+    <name>learn-hibernate</name>
+    <description>Getting Started Guide</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
