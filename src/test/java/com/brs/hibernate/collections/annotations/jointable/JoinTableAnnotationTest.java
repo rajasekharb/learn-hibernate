@@ -1,4 +1,4 @@
-package com.brs.hibernate.collections.annotations;
+package com.brs.hibernate.collections.annotations.jointable;
 
 import com.brs.hibernate.utils.HibernateUtils;
 import org.hibernate.Session;
@@ -15,8 +15,7 @@ import static com.brs.hibernate.TestUtils.retrieveObjects;
 /**
  * @author Rajasekhar
  */
-public class OneToManyUsingForeignKeyTest {
-
+public class JoinTableAnnotationTest {
     @Test
     public void insertTest() throws Exception {
         Session session = HibernateUtils.openSession();
@@ -25,10 +24,10 @@ public class OneToManyUsingForeignKeyTest {
 
         List<Car> cars = new ArrayList<>();
 
-        cars.add(new Car("Skoda", "White"));
-        cars.add(new Car("Benz", "Black"));
+        cars.add(new Car("Mercedes", "White"));
+        cars.add(new Car("BMW", "Black"));
 
-        Showroom showroom = new Showroom("Delhi", "scott", cars);
+        Showroom showroom = new Showroom("Hyderabad", "Amar", cars);
 
         Serializable serializable = session.save(showroom);
 
@@ -39,6 +38,6 @@ public class OneToManyUsingForeignKeyTest {
 
     @Test
     public void retrieveTest() throws Exception {
-        retrieveObjects("t_showroom_annotation", Showroom.class);
+        retrieveObjects("t_showroom_annotation_join_table", Showroom.class);
     }
 }
